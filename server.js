@@ -53,7 +53,10 @@ app.get('/', function (req, res) {
               genomeBuilds.forEach(function(genomeBuild) {
                 genomeBuild['references'] = referenceMap[genomeBuild.id];
               });
-              res.json(species);            
+
+              res.header('Content-Type', 'application/json');
+              res.header('Charset', 'utf-8')
+              res.send(req.query.callback + '(' + JSON.stringify(species) +');');
             }
           });
 
