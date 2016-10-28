@@ -22,4 +22,10 @@ CREATE TABLE reference (
 	FOREIGN KEY (idGenomeBuild) REFERENCES reference(id)
 );
 
+CREATE TABLE genomeBuildAlias (
+	id INTEGER primary key AUTOINCREMENT, 
+	idGenomeBuild int not null, 
+	alias text not null,
+	FOREIGN KEY (idGenomeBuild) REFERENCES genomeBuildAlias(id)
+);
 

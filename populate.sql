@@ -5,6 +5,11 @@ insert into species (name, binomialName, latin_name)
 insert into genomeBuild (idSpecies, name) 
 	values ((SELECT id FROM species WHERE name = 'Human'), 'GRCh37');
 
+insert into genomeBuildAlias (idGenomeBuild, alias)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'NCBI37');
+insert into genomeBuildAlias (idGenomeBuild, alias)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'hg19');
+	
 insert into reference (idGenomeBuild, name, length, alias, fastaPath)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), '1', +249250621, 'chr1', './data/references/hs_ref_chr1.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPath)
@@ -58,6 +63,11 @@ insert into reference (idGenomeBuild, name, length, alias, fastaPath)
 
 insert into genomeBuild (idSpecies, name) 
 	values ((SELECT id FROM species WHERE name = 'Human'), 'GRCh38');
+
+insert into genomeBuildAlias (idGenomeBuild, alias)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'NCBI38');
+insert into genomeBuildAlias (idGenomeBuild, alias)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'hg20');
 
 insert into reference (idGenomeBuild, name, length, alias, fastaPath)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '1', +248956422, 'chr1', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.1.fa');

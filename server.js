@@ -10,6 +10,7 @@ app.use(express.static(__dirname ));
 
 app.get('/', function (req, res) {  
 
+  // Get all species
   var speciesSql = "SELECT * from species";
   var species = [];
   db.all(speciesSql,function(err,speciesRows){ 
@@ -18,6 +19,7 @@ app.get('/', function (req, res) {
         species.push(speciesRow);
       });
 
+      // Get all genome builds and map them back to parent species
       var buildSql = "SELECT * from genomebuild ";
       var genomeBuilds = [];
       db.all(buildSql,function(err,buildRows){ 
@@ -38,6 +40,8 @@ app.get('/', function (req, res) {
           species.forEach(function(species) {
             species['genomeBuilds'] = buildMap[species.id];
           });
+
+          // Get all references and map them back to parent genome build
           var referenceMap = {};
           var refSqlString = "SELECT * from reference";
           db.all(refSqlString,function(err,refRows){ 
@@ -54,9 +58,28 @@ app.get('/', function (req, res) {
                 genomeBuild['references'] = referenceMap[genomeBuild.id];
               });
 
-              res.header('Content-Type', 'application/json');
-              res.header('Charset', 'utf-8')
-              res.send(req.query.callback + '(' + JSON.stringify(species) +');');
+              // Get all genome build aliases and map them back to parent genome build
+              var aliasMap = {};
+              var aliasSqlString = "SELECT * from genomeBuildAlias";
+              db.all(aliasSqlString,function(err,aliasRows){ 
+                if (aliasRows != null && aliasRows.length > 0) {
+                  aliasRows.forEach(function(aliasRow) {
+                    var aliases = aliasMap[aliasRow.idGenomeBuild];
+                    if (aliases == null) {
+                      aliases = [];
+                      aliasMap[aliasRow.idGenomeBuild] = aliases;
+                    }
+                    aliases.push(aliasRow);
+                  });
+                  genomeBuilds.forEach(function(genomeBuild) {
+                    genomeBuild['aliases'] = aliasMap[genomeBuild.id];
+                  });
+
+                  res.header('Content-Type', 'application/json');
+                  res.header('Charset', 'utf-8')
+                  res.send(req.query.callback + '(' + JSON.stringify(species) +');');
+                }
+              });
             }
           });
 
