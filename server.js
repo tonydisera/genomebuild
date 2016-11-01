@@ -58,28 +58,50 @@ app.get('/', function (req, res) {
                 genomeBuild['references'] = referenceMap[genomeBuild.id];
               });
 
+              // Get all genome build resources and map them back to parent genome build
+              var resourceMap = {};
+              var resourceSqlString = "SELECT * from genomeBuildResource";
+              db.all(resourceSqlString,function(err,resourceRows){ 
+                if (resourceRows != null && resourceRows.length > 0) {
+                  resourceRows.forEach(function(resourceRow) {
+                    var resourcees = resourceMap[resourceRow.idGenomeBuild];
+                    if (resourcees == null) {
+                      resourcees = [];
+                      resourceMap[resourceRow.idGenomeBuild] = resourcees;
+                    }
+                    resourcees.push(resourceRow);
+                  });
+                  genomeBuilds.forEach(function(genomeBuild) {
+                    genomeBuild['resources'] = resourceMap[genomeBuild.id];
+                  });
+                }
+
               // Get all genome build aliases and map them back to parent genome build
               var aliasMap = {};
               var aliasSqlString = "SELECT * from genomeBuildAlias";
-              db.all(aliasSqlString,function(err,aliasRows){ 
-                if (aliasRows != null && aliasRows.length > 0) {
-                  aliasRows.forEach(function(aliasRow) {
-                    var aliases = aliasMap[aliasRow.idGenomeBuild];
-                    if (aliases == null) {
-                      aliases = [];
-                      aliasMap[aliasRow.idGenomeBuild] = aliases;
-                    }
-                    aliases.push(aliasRow);
-                  });
-                  genomeBuilds.forEach(function(genomeBuild) {
-                    genomeBuild['aliases'] = aliasMap[genomeBuild.id];
-                  });
+                db.all(aliasSqlString,function(err,aliasRows){ 
+                  if (aliasRows != null && aliasRows.length > 0) {
+                    aliasRows.forEach(function(aliasRow) {
+                      var aliases = aliasMap[aliasRow.idGenomeBuild];
+                      if (aliases == null) {
+                        aliases = [];
+                        aliasMap[aliasRow.idGenomeBuild] = aliases;
+                      }
+                      aliases.push(aliasRow);
+                    });
+                    genomeBuilds.forEach(function(genomeBuild) {
+                      genomeBuild['aliases'] = aliasMap[genomeBuild.id];
+                    });
 
-                  res.header('Content-Type', 'application/json');
-                  res.header('Charset', 'utf-8')
-                  res.send(req.query.callback + '(' + JSON.stringify(species) +');');
-                }
+                    res.header('Content-Type', 'application/json');
+                    res.header('Charset', 'utf-8')
+                    res.send(req.query.callback + '(' + JSON.stringify(species) +');');
+                  }
+                });
+
+
               });
+
             }
           });
 
