@@ -30,3 +30,11 @@ CREATE TABLE genomeBuildAlias (
 	FOREIGN KEY (idGenomeBuild) REFERENCES genomeBuildAlias(id)
 );
 
+CREATE TABLE genomeBuildResource (
+	id INTEGER primary key AUTOINCREMENT, 
+	idGenomeBuild int not null, 
+	type text not null,
+	resource text not null,
+	FOREIGN KEY (idGenomeBuild) REFERENCES genomeBuildResource(id)
+);
+
