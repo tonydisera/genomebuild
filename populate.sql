@@ -1,3 +1,9 @@
+delete from genomeBuildAlias;
+delete from genomeBuildResource;
+delete from reference;
+delete from genomeBuild;
+delete from species;
+
 insert into species (name, binomialName, latin_name) 
 	values ('Human', 'Homo sapiens', 'homo_sapiens');
 
@@ -5,12 +11,12 @@ insert into species (name, binomialName, latin_name)
 insert into genomeBuild (idSpecies, name) 
 	values ((SELECT id FROM species WHERE name = 'Human'), 'GRCh37');
 
-insert into genomeBuildAlias (idGenomeBuild, alias)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'NCBI37');
-insert into genomeBuildAlias (idGenomeBuild, alias)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'hg19');
 insert into genomeBuildAlias (idGenomeBuild, type, alias)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'CLINVAR', 'c37');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'),  '', 'NCBI37');
+insert into genomeBuildAlias (idGenomeBuild, type, alias)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'),  'UCSC', 'hg19');
+insert into genomeBuildAlias (idGenomeBuild, type, alias)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'),  'CLINVAR', 'c37');
 
 
 insert into genomeBuildResource (idGenomeBuild, type, resource)
@@ -73,10 +79,10 @@ insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fas
 insert into genomeBuild (idSpecies, name) 
 	values ((SELECT id FROM species WHERE name = 'Human'), 'GRCh38');
 
-insert into genomeBuildAlias (idGenomeBuild, alias)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'NCBI38');
-insert into genomeBuildAlias (idGenomeBuild, alias)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'hg38');
+insert into genomeBuildAlias (idGenomeBuild, type, alias)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '', 'NCBI38');
+insert into genomeBuildAlias (idGenomeBuild, type, alias)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'UCSC', 'hg38');
 insert into genomeBuildAlias (idGenomeBuild, type, alias)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR', 'c38');
 
@@ -88,53 +94,53 @@ insert into genomeBuildResource (idGenomeBuild, type, resource)
 
 
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '1', +248956422, 'chr1', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.1.fa', './data/references/homo_sapiens/hg20/chr1.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '1', +248956422, 'chr1', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.1.fa', './data/references/homo_sapiens/hg38/chr1.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '2', +242193529, 'chr2', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.2.fa', './data/references/homo_sapiens/hg20/chr2.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '2', +242193529, 'chr2', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.2.fa', './data/references/homo_sapiens/hg38/chr2.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '3', +198295559, 'chr3', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.3.fa', './data/references/homo_sapiens/hg20/chr3.fa');		
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '3', +198295559, 'chr3', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.3.fa', './data/references/homo_sapiens/hg38/chr3.fa');		
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '4', +190214555, 'chr4', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.4.fa', './data/references/homo_sapiens/hg20/chr4.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '4', +190214555, 'chr4', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.4.fa', './data/references/homo_sapiens/hg38/chr4.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '5', +181538259, 'chr5', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.5.fa', './data/references/homo_sapiens/hg20/chr5.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '5', +181538259, 'chr5', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.5.fa', './data/references/homo_sapiens/hg38/chr5.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '6', +170805979, 'chr6', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.6.fa', './data/references/homo_sapiens/hg20/chr6.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '6', +170805979, 'chr6', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.6.fa', './data/references/homo_sapiens/hg38/chr6.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '7', +159345973, 'chr7', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.7.fa', './data/references/homo_sapiens/hg20/chr7.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '7', +159345973, 'chr7', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.7.fa', './data/references/homo_sapiens/hg38/chr7.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '8', +145138636, 'chr8', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.8.fa', './data/references/homo_sapiens/hg20/chr8.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '8', +145138636, 'chr8', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.8.fa', './data/references/homo_sapiens/hg38/chr8.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '9', +138394717, 'chr9', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.9.fa', './data/references/homo_sapiens/hg20/chr9.fa');	
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '9', +138394717, 'chr9', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.9.fa', './data/references/homo_sapiens/hg38/chr9.fa');	
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '10', +133797422, 'chr10', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.10.fa', './data/references/homo_sapiens/hg20/chr10.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '10', +133797422, 'chr10', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.10.fa', './data/references/homo_sapiens/hg38/chr10.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '11', +135086622, 'chr11', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.11.fa', './data/references/homo_sapiens/hg20/chr11.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '11', +135086622, 'chr11', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.11.fa', './data/references/homo_sapiens/hg38/chr11.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '12', +133275309, 'chr12', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.12.fa', './data/references/homo_sapiens/hg20/chr12.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '12', +133275309, 'chr12', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.12.fa', './data/references/homo_sapiens/hg38/chr12.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '13', +114364328, 'chr13', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.13.fa', './data/references/homo_sapiens/hg20/chr13.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '13', +114364328, 'chr13', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.13.fa', './data/references/homo_sapiens/hg38/chr13.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '14', +107043718, 'chr14', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.14.fa', './data/references/homo_sapiens/hg20/chr14.fa');	
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '14', +107043718, 'chr14', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.14.fa', './data/references/homo_sapiens/hg38/chr14.fa');	
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '15', +101991189, 'chr15', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.15.fa', './data/references/homo_sapiens/hg20/chr15.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '15', +101991189, 'chr15', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.15.fa', './data/references/homo_sapiens/hg38/chr15.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '16', +90338345, 'chr16', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.16.fa', './data/references/homo_sapiens/hg20/chr16.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '16', +90338345, 'chr16', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.16.fa', './data/references/homo_sapiens/hg38/chr16.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '17', +83257441, 'chr17', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.17.fa', './data/references/homo_sapiens/hg20/chr17.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '17', +83257441, 'chr17', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.17.fa', './data/references/homo_sapiens/hg38/chr17.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '18', +80373285, 'chr18', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.18.fa', './data/references/homo_sapiens/hg20/chr18.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '18', +80373285, 'chr18', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.18.fa', './data/references/homo_sapiens/hg38/chr18.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '19', +58617616, 'chr19', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.19.fa', './data/references/homo_sapiens/hg20/chr19.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '19', +58617616, 'chr19', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.19.fa', './data/references/homo_sapiens/hg38/chr19.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '20', +64444167, 'chr20', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.20.fa', './data/references/homo_sapiens/hg20/chr20.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '20', +64444167, 'chr20', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.20.fa', './data/references/homo_sapiens/hg38/chr20.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '21', +46709983, 'chr21', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.21.fa', './data/references/homo_sapiens/hg20/chr21.fa');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '21', +46709983, 'chr21', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.21.fa', './data/references/homo_sapiens/hg38/chr21.fa');
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '22', +50818468, 'chr22', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.22.fa', './data/references/homo_sapiens/hg20/chr22.fa');	
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), '22', +50818468, 'chr22', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.22.fa', './data/references/homo_sapiens/hg38/chr22.fa');	
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'X', +156040895, 'chrX', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.X.fa', './data/references/homo_sapiens/hg20/chrX.fa');	
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'X', +156040895, 'chrX', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.X.fa', './data/references/homo_sapiens/hg38/chrX.fa');	
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'Y', +57227415, 'chrY', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.Y.fa', './data/references/homo_sapiens/hg20/chrY.fa');	
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'Y', +57227415, 'chrY', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.Y.fa', './data/references/homo_sapiens/hg38/chrY.fa');	
 
 
       
