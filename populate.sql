@@ -76,7 +76,7 @@ insert into genomeBuild (idSpecies, name)
 insert into genomeBuildAlias (idGenomeBuild, alias)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'NCBI38');
 insert into genomeBuildAlias (idGenomeBuild, alias)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'hg20');
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'hg38');
 insert into genomeBuildAlias (idGenomeBuild, type, alias)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR', 'c38');
 
