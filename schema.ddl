@@ -18,7 +18,8 @@ CREATE TABLE reference (
 	name text not null, 
 	length int null, 
 	alias text null, 
-	fastaPath text null,
+	fastaPathEnsembl text null,
+	fastaPathUCSC text null,
 	FOREIGN KEY (idGenomeBuild) REFERENCES reference(id)
 );
 
