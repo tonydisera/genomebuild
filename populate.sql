@@ -23,6 +23,9 @@ insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'CLINVAR VCF OFFLINE', 'clinvar.GRCh37.vcf.gz');	
 insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'CLINVAR EUTILS BASE POSITION', 'Base+Position+for+Assembly+GRCh37');	
+insert into genomeBuildResource (idGenomeBuild, type, resource)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'ENSEMBL URL', 'http://grch37.ensembl.org/Homo_sapiens/');
+	
 
 	
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
@@ -91,8 +94,9 @@ insert into genomeBuildResource (idGenomeBuild, type, resource)
 insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR VCF OFFLINE', 'clinvar.GRCh38.vcf.gz');
 insert into genomeBuildResource (idGenomeBuild, type, resource)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR EUTILS BASE POSITION', 'Base+Position');	
-
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR EUTILS BASE POSITION', 'Base+Position');
+insert into genomeBuildResource (idGenomeBuild, type, resource)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'ENSEMBL URL', 'http://uswest.ensembl.org/Homo_sapiens/');
 
 
 
