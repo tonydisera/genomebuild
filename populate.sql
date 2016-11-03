@@ -15,14 +15,14 @@ insert into genomeBuildAlias (idGenomeBuild, type, alias)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'),  '', 'NCBI37');
 insert into genomeBuildAlias (idGenomeBuild, type, alias)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'),  'UCSC', 'hg19');
-insert into genomeBuildAlias (idGenomeBuild, type, alias)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'),  'CLINVAR', 'c37');
 
 
 insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'CLINVAR VCF S3', 'https://s3.amazonaws.com/iobio/gene/clinvar/clinvar.GRCh37.vcf.gz');	
 insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'CLINVAR VCF OFFLINE', 'clinvar.GRCh37.vcf.gz');	
+insert into genomeBuildResource (idGenomeBuild, type, resource)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'CLINVAR EUTILS BASE POSITION', 'Base+Position+for+Assembly+GRCh37');	
 
 	
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
@@ -89,7 +89,10 @@ insert into genomeBuildAlias (idGenomeBuild, type, alias)
 insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR VCF S3', 'https://s3.amazonaws.com/iobio/gene/clinvar/clinvar.GRCh38.vcf.gz');	
 insert into genomeBuildResource (idGenomeBuild, type, resource)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR VCF OFFLINE', 'clinvar.GRCh38.vcf.gz');	
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR VCF OFFLINE', 'clinvar.GRCh38.vcf.gz');
+insert into genomeBuildResource (idGenomeBuild, type, resource)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR EUTILS BASE POSITION', 'Base+Position');	
+
 
 
 
