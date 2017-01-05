@@ -15,6 +15,9 @@ insert into genomeBuildAlias (idGenomeBuild, type, alias)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'),  '', 'NCBI37');
 insert into genomeBuildAlias (idGenomeBuild, type, alias)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'),  'UCSC', 'hg19');
+insert into genomeBuildAlias (idGenomeBuild, type, alias)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'REFSEQ ASSEMBLY ACCESSION RANGE', 'GCF_000001405.[13-25]');
+
 
 
 insert into genomeBuildResource (idGenomeBuild, type, resource)
@@ -88,6 +91,11 @@ insert into genomeBuildAlias (idGenomeBuild, type, alias)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'UCSC', 'hg38');
 insert into genomeBuildAlias (idGenomeBuild, type, alias)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR', 'c38');
+insert into genomeBuildAlias (idGenomeBuild, type, alias)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'REFSEQ ASSEMBLY ACCESSION RANGE', 'GCF_000001405.[26-35]');
+
+
+
 
 insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR VCF S3', 'https://s3.amazonaws.com/iobio/gene/clinvar/clinvar.GRCh38.vcf.gz');	
