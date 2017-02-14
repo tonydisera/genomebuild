@@ -78,7 +78,7 @@ insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fas
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'X', +155270560, 'chrX', './data/references/homo_sapiens/GRCh37/hs_ref_chrX.fa','./data/references/homo_sapiens/hg19/chrX.fa');	
 insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
-	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'Y', +59373566, 'chrY', './data/references/homo_sapiens/GRCh37/hs_ref_Y.fa','./data/references/homo_sapiens/hg19/chrY.fa');	
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'Y', +59373566, 'chrY', './data/references/homo_sapiens/GRCh37/hs_ref_chrY.fa','./data/references/homo_sapiens/hg19/chrY.fa');	
 
 
 
