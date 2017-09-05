@@ -23,6 +23,8 @@ insert into genomeBuildAlias (idGenomeBuild, type, alias)
 insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'CLINVAR VCF S3', 'https://s3.amazonaws.com/iobio/gene/clinvar/clinvar.GRCh37.vcf.gz');	
 insert into genomeBuildResource (idGenomeBuild, type, resource)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'CLINVAR VCF FTP', 'ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/clinvar.vcf.gz');	
+insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'CLINVAR VCF OFFLINE', 'clinvar.GRCh37.vcf.gz');	
 insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh37'), 'CLINVAR EUTILS BASE POSITION', 'Base+Position+for+Assembly+GRCh37');	
@@ -100,6 +102,8 @@ insert into genomeBuildAlias (idGenomeBuild, type, alias)
 insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR VCF S3', 'https://s3.amazonaws.com/iobio/gene/clinvar/clinvar.GRCh38.vcf.gz');	
 insert into genomeBuildResource (idGenomeBuild, type, resource)
+	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR VCF FTP', 'ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz');	
+insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR VCF OFFLINE', 'clinvar.GRCh38.vcf.gz');
 insert into genomeBuildResource (idGenomeBuild, type, resource)
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'CLINVAR EUTILS BASE POSITION', 'Base+Position');
@@ -158,4 +162,57 @@ insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fas
 	values ((SELECT id FROM genomeBuild WHERE name = 'GRCh38'), 'Y', +57227415, 'chrY', './data/references/homo_sapiens/GRCh38/Homo_sapiens.GRCh38.dna.chromosome.Y.fa', './data/references/homo_sapiens/hg38/chrY.fa');	
 
 
-      
+ 
+insert into species (name, binomialName, latin_name) 
+	values ('Mouse', 'Mus musculus', 'mus_musculus');
+
+insert into genomeBuild (idSpecies, name) 
+	values ((SELECT id FROM species WHERE name = 'Mouse'), 'mm10/GRCm38');
+
+insert into genomeBuildAlias (idGenomeBuild, type, alias)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), 'UCSC', 'mm10');
+
+
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '1', +195471971, 'chr1', './data/references/mus_musculus/GRCm38/chr1.fa','./data/references/mus_musculu/mm10/chr1.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '2', +182113224, 'chr2', './data/references/mus_musculus/GRCm38/chr2.fa','./data/references/mus_musculu/mm10/chr2.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '3', +160039680, 'chr3', './data/references/mus_musculus/GRCm38/chr3.fa','./data/references/mus_musculu/mm10/chr3.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '4', +156508116, 'chr4', './data/references/mus_musculus/mm10/GRCm38/chr4.fa','./data/references/mus_musculu/mm10/chr4.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '5', +151834684, 'chr5', './data/references/mus_musculus/mm10/GRCm38/chr5.fa','./data/references/mus_musculu/mm10/chr5.fa');
+insert into reference (idGenomeBuild, name, length, alias, , fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '6', +149736546, 'chr6', './data/references/mus_musculus/mm10/GRCm38/chr6.fa','./data/references/mus_musculu/mm10/chr6.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '7', +145441459, 'chr7', './data/references/mus_musculus/mm10/GRCm38/chr7.fa','./data/references/mus_musculu/mm10/chr7.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '8', +129401213, 'chr8', './data/references/mus_musculus/mm10/GRCm38/chr8.fa','./data/references/mus_musculu/mm10/chr8.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '9', +124595110, 'chr9', './data/references/mus_musculus/mm10/GRCm38/chr9.fa','./data/references/mus_musculu/mm10/chr9.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '10', +130694993, 'chr10', './data/references/mus_musculus/mm10/GRCm38/chr10.fa','./data/references/mus_musculu/mm10/chr10.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '11', +122082543, 'chr11', './data/references/mus_musculus/mm10/GRCm38/chr11.fa','./data/references/mus_musculu/mm10/chr11.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '12', +120129022, 'chr12', './data/references/mus_musculus/mm10/GRCm38/chr12.fa','./data/references/mus_musculu/mm10/chr12.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '13', +120421639, 'chr13', './data/references/mus_musculus/mm10/GRCm38/chr13.fa','./data/references/mus_musculu/mm10/chr13.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '14', +124902244, 'chr14', './data/references/mus_musculus/mm10/GRCm38/chr14.fa','./data/references/mus_musculu/mm10/chr14.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '15', +104043685, 'chr15', './data/references/mus_musculus/mm10/GRCm38/chr15.fa','./data/references/mus_musculu/mm10/chr15.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '16', +98207768, 'chr16', './data/references/mus_musculus/mm10/GRCm38/chr16.fa','./data/references/mus_musculu/mm10/chr16.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '17', +94987271, 'chr17', './data/references/mus_musculus/mm10/GRCm38/chr17.fa','./data/references/mus_musculu/mm10/chr17.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '18', +90702639, 'chr18', './data/references/mus_musculus/mm10/GRCm38/chr18.fa','./data/references/mus_musculu/mm10/chr18.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), '19', +61431566, 'chr19', './data/references/mus_musculus/mm10/GRCm38/chr19.fa','./data/references/mus_musculu/mm10/chr19.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), 'X', +171031299, 'chrX', './data/references/mus_musculus/mm10/GRCm38/chrX.fa','./data/references/mus_musculu/mm10/chrX.fa');
+insert into reference (idGenomeBuild, name, length, alias, fastaPathEnsembl, fastaPathUCSC)
+	values ((SELECT id FROM genomeBuild WHERE name = 'mm10/GRCm38'), 'Y', +91744698, 'chrY', './data/references/mus_musculus/mm10/GRCm38/chrY.fa','./data/references/mus_musculu/mm10/chrY.fa');
+
